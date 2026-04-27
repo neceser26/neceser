@@ -1,0 +1,4 @@
+baseURL = 'https://neceser.co/'
+languageCode = 'es'
+title = 'nece ser'
+theme = 'PaperMod'
