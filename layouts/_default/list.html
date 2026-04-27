@@ -1,0 +1,22 @@
+{{ define "main" }}
+<main class="biblioteca">
+  <div class="estante">
+    {{ range .Pages }}
+    {{ $categoria := .Params.categoria | default "general" }}
+    {{ $tipo := .Params.tipo | default "lomo" }}
+
+    {{ if eq $tipo "portada" }}
+    <a href="{{ .Permalink }}" class="libro portada categoria-{{ $categoria }}">
+      <span class="libro-titulo">{{ .Title }}</span>
+      {{ with .Params.autor }}<span class="libro-autor">{{ . }}</span>{{ end }}
+    </a>
+    {{ else }}
+    <a href="{{ .Permalink }}" class="libro lomo categoria-{{ $categoria }}">
+      <span class="libro-titulo">{{ .Title }}</span>
+    </a>
+    {{ end }}
+
+    {{ end }}
+  </div>
+</main>
+{{ end }}
