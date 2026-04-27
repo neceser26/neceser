@@ -20,3 +20,8 @@ theme = 'PaperMod'
     name = "manifiesto"
     url = "/manifiesto/"
     weight = 2
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
