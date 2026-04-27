@@ -2,3 +2,21 @@ baseURL = 'https://neceser.co/'
 languageCode = 'es'
 title = 'nece ser'
 theme = 'PaperMod'
+
+[params]
+  author = "nece ser"
+  description = "Cine · Literatura · Camino"
+  defaultTheme = "dark"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+
+[menu]
+  [[menu.main]]
+    name = "archivo"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "manifiesto"
+    url = "/manifiesto/"
+    weight = 2
