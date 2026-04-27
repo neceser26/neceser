@@ -1,0 +1,44 @@
+body, .post-title, .entry-header, h1, h2, h3 {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+}
+
+body {
+  background-color: #1A1814;
+}
+
+:root {
+  --noche: #1A1814;
+  --pagina: #F5F0E8;
+  --calabaza: #9E6B2E;
+  --musgo: #5C7A54;
+  --ceniza: #7A8280;
+}
+
+.post-content, p, li {
+  color: #F5F0E8;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: #9E6B2E;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #F5F0E8;
+}
+
+.nav, header {
+  border-bottom: 0.5px solid rgba(245, 240, 232, 0.08);
+}
+
+.logo a {
+  font-family: 'Palatino Linotype', Palatino, serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #F5F0E8;
+}
+
+footer {
+  border-top: 0.5px sol
