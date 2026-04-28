@@ -2,6 +2,7 @@ baseURL = 'https://neceser.co/'
 languageCode = 'es'
 title = 'nece ser'
 theme = 'PaperMod'
+paginate = 100
 
 [params]
   author = "nece ser"

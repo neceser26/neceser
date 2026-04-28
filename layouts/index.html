@@ -1,18 +1,96 @@
 {{ define "main" }}
 <main class="biblioteca">
-  <div class="librero-marco">
-    <div class="librero-lateral izquierdo"></div>
+
+  <div class="biblioteca-fondo"></div>
+
+  <svg class="biblioteca-rayos" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8C48A" stop-opacity="0.6"/><stop offset="100%" stop-color="#E8C48A" stop-opacity="0.04"/></linearGradient>
+      <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4A055" stop-opacity="0.5"/><stop offset="100%" stop-color="#D4A055" stop-opacity="0.04"/></linearGradient>
+      <linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8AAE84" stop-opacity="0.38"/><stop offset="100%" stop-color="#8AAE84" stop-opacity="0.03"/></linearGradient>
+      <linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0E4C8" stop-opacity="0.55"/><stop offset="100%" stop-color="#F0E4C8" stop-opacity="0.04"/></linearGradient>
+      <linearGradient id="r5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8C4C2" stop-opacity="0.32"/><stop offset="100%" stop-color="#B8C4C2" stop-opacity="0.03"/></linearGradient>
+    </defs>
+    <polygon points="720,0 760,0 900,900 540,900" fill="url(#r4)" opacity="0.7"/>
+    <polygon points="715,0 725,0 740,900 700,900" fill="url(#r1)" opacity="0.85"/>
+    <polygon points="730,0 770,0 1040,900 880,900" fill="url(#r2)" opacity="0.7"/>
+    <polygon points="750,0 800,0 1240,900 1100,900" fill="url(#r3)" opacity="0.6"/>
+    <polygon points="780,0 850,0 1400,900 1320,900" fill="url(#r5)" opacity="0.45"/>
+    <polygon points="700,0 660,0 380,900 520,900" fill="url(#r2)" opacity="0.7"/>
+    <polygon points="680,0 630,0 200,900 340,900" fill="url(#r3)" opacity="0.6"/>
+    <polygon points="650,0 590,0 0,800 0,580" fill="url(#r5)" opacity="0.45"/>
+    <circle cx="720" cy="0" r="40" fill="#F0E4C8" opacity="0.45"/>
+    <circle cx="720" cy="0" r="22" fill="#E8C48A" opacity="0.65"/>
+    <circle cx="720" cy="0" r="8" fill="#D4A055" opacity="0.9"/>
+  </svg>
+
+  <div class="biblioteca-caption" id="caption">
+    <span class="caption-numero" id="caption-num"></span>
+    <span class="caption-titulo" id="caption-titulo"></span>
+    <span class="caption-separador"> — </span>
+    <span class="caption-categoria" id="caption-cat"></span>
+    <span class="caption-fecha" id="caption-fecha"></span>
+  </div>
+
+  <div class="librero-wrap">
+    <!-- SVG del mueble — trazos encima de los libros -->
+    <svg class="librero-svg" viewBox="0 0 1343 223" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tope — trazo doble -->
+      <line x1="0" y1="2" x2="1343" y2="2" stroke="#C8922A" stroke-width="2.5"/>
+      <line x1="0" y1="6" x2="1343" y2="6" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
+      <!-- Lateral izquierdo — trazo doble -->
+      <line x1="2" y1="0" x2="2" y2="223" stroke="#C8922A" stroke-width="2.5"/>
+      <line x1="7" y1="0" x2="7" y2="223" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
+      <!-- Lateral derecho — trazo doble -->
+      <line x1="1341" y1="0" x2="1341" y2="223" stroke="#C8922A" stroke-width="2.5"/>
+      <line x1="1336" y1="0" x2="1336" y2="223" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
+      <!-- Base — trazo doble más grueso -->
+      <line x1="0" y1="220" x2="1343" y2="220" stroke="#C8922A" stroke-width="3"/>
+      <line x1="0" y1="215" x2="1343" y2="215" stroke="#8A5A08" stroke-width="0.8" opacity="0.6"/>
+    </svg>
+
     <div class="librero">
+      {{ $i := 1 }}
       {{ range where site.RegularPages "Section" "posts" }}
       {{ $categoria := .Params.categoria | default "general" }}
       {{ $tipo := .Params.tipo | default "lomo" }}
-      <a href="{{ .Permalink }}" class="libro {{ $tipo }} categoria-{{ $categoria }}" data-categoria="{{ $categoria }}">
-        <span class="libro-titulo">{{ .Title }}</span>
-        {{ if eq $tipo "portada" }}{{ with .Params.autor }}<span class="libro-autor">{{ . }}</span>{{ end }}{{ end }}
+      {{ $fecha := .Date.Format "2006" }}
+      <a href="{{ .Permalink }}"
+         class="libro {{ $tipo }} categoria-{{ $categoria }}"
+         data-titulo="{{ .Title }}"
+         data-categoria="{{ $categoria }}"
+         data-num="{{ $i }}"
+         data-fecha="{{ $fecha }}">
+        <span class="libro-numero">{{ $i }}</span>
+        {{ if eq $tipo "portada" }}
+        <span class="libro-titulo-portada">{{ .Title }}</span>
+        {{ end }}
       </a>
+      {{ $i = add $i 1 }}
       {{ end }}
     </div>
-    <div class="librero-lateral derecho"></div>
   </div>
+
 </main>
+
+<script>
+const caption = document.getElementById('caption');
+const capNum = document.getElementById('caption-num');
+const capTitulo = document.getElementById('caption-titulo');
+const capCat = document.getElementById('caption-cat');
+const capFecha = document.getElementById('caption-fecha');
+document.querySelectorAll('.libro').forEach(libro => {
+  libro.addEventListener('mouseenter', () => {
+    capNum.textContent = String(libro.dataset.num).padStart(2, '0');
+    capTitulo.textContent = libro.dataset.titulo;
+    capCat.textContent = libro.dataset.categoria;
+    capCat.className = 'caption-categoria ' + libro.dataset.categoria;
+    capFecha.textContent = libro.dataset.fecha;
+    caption.classList.add('activo');
+  });
+  libro.addEventListener('mouseleave', () => {
+    caption.classList.remove('activo');
+  });
+});
+</script>
 {{ end }}
