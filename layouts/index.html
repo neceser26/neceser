@@ -1,0 +1,18 @@
+{{ define "main" }}
+<main class="biblioteca">
+  <div class="librero-marco">
+    <div class="librero-lateral izquierdo"></div>
+    <div class="librero">
+      {{ range where site.RegularPages "Section" "posts" }}
+      {{ $categoria := .Params.categoria | default "general" }}
+      {{ $tipo := .Params.tipo | default "lomo" }}
+      <a href="{{ .Permalink }}" class="libro {{ $tipo }} categoria-{{ $categoria }}" data-categoria="{{ $categoria }}">
+        <span class="libro-titulo">{{ .Title }}</span>
+        {{ if eq $tipo "portada" }}{{ with .Params.autor }}<span class="libro-autor">{{ . }}</span>{{ end }}{{ end }}
+      </a>
+      {{ end }}
+    </div>
+    <div class="librero-lateral derecho"></div>
+  </div>
+</main>
+{{ end }}
