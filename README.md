@@ -124,3 +124,20 @@ Bitácora iniciada el 27 de abril de 2026.
 Construido con Hugo, GitHub Pages y criterio editorial.
 READMEEOF
 git add . && git commit -m "README limpio y coherente — sesión 27/04/26" && git push
+---
+
+## 9. Estado actual — 28/04/26
+
+### El librero — versión Kandinsky-Munch
+- ✅ Fondo gradiente tragaluz (yeso cálido → penumbra)
+- ✅ Rayos de luz en abanico con paleta neceser — eco de Munch
+- ✅ Mueble con trazos SVG dobles — laterales y base como dibujo a tinta
+- ✅ Libros con alturas variables — gesto Kandinsky
+- ✅ Números fantasma centrados en cada tomo
+- ✅ Caption interactivo al hover — número, título, categoría en color, año
+- ✅ 11 posts de prueba con mezcla de lomos y portadas
+- ✅ paginate = 100 en hugo.toml
+- ⬜ Ajuste fino de posición del librero en el viewport
+- ⬜ Posts de prueba → posts reales con contenido
+- ⬜ Reorganización interactiva por categoría
+- ⬜ Easter eggs al llenarse
