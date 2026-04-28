@@ -216,3 +216,28 @@ categoria: "cine"   # Define el color del lomo
 - CSS roto antes de `.biblioteca` invalida todos los estilos siguientes
 - Limpiar caché con `rm -rf resources/` al cambiar CSS
 - Los campos del frontmatter deben coincidir exactamente con los del template: `categoria` para color, `tipo` para formato
+- `public/` debe estar en `.gitignore` — si se commitea, entra en conflicto con GitHub Actions
+- Siempre parar el servidor (`Ctrl+C`) antes de limpiar y reconstruir
+- El CSS del archivo fuente debe estar limpio — texto literal de comandos adentro del CSS lo corrompe
+
+---
+
+## 8. Estado actual — 27/04/26
+
+### El librero
+El homepage (`/`) es un librero físico construido con CSS puro. Los laterales son gradientes de madera, los estantes aparecen automáticamente con `repeating-linear-gradient` conforme se agregan libros.
+
+- ✅ Librero con laterales físicos en `layouts/index.html`
+- ✅ Homepage = librero (no lista de posts)
+- ✅ `public/` en `.gitignore` — localhost coincide con neceser.co
+- ✅ Primer libro — Calvino, verde Musgo
+- ⬜ Más publicaciones para llenar el estante
+- ⬜ Refinamiento visual — iluminación, sombras, posición
+- ⬜ Reorganización interactiva por categoría (futuro)
+- ⬜ Easter eggs al llenarse el librero (futuro)
+
+### Archivos clave
+- `layouts/index.html` — homepage / librero
+- `layouts/_default/list.html` — lista de posts en /posts/
+- `assets/css/extended/neceser.css` — estilos completos
+- `.gitignore` — excluye public/ y .DS_Store
