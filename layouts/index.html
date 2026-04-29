@@ -1,54 +1,59 @@
 {{ define "main" }}
+
+<!-- Fondo fijo -->
+<div class="biblioteca-fondo"></div>
+
+<!-- Rayos fijos -->
+<svg class="biblioteca-rayos" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8C48A" stop-opacity="0.55"/><stop offset="100%" stop-color="#E8C48A" stop-opacity="0.03"/></linearGradient>
+    <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4A055" stop-opacity="0.45"/><stop offset="100%" stop-color="#D4A055" stop-opacity="0.03"/></linearGradient>
+    <linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8AAE84" stop-opacity="0.32"/><stop offset="100%" stop-color="#8AAE84" stop-opacity="0.02"/></linearGradient>
+    <linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0E4C8" stop-opacity="0.5"/><stop offset="100%" stop-color="#F0E4C8" stop-opacity="0.03"/></linearGradient>
+    <linearGradient id="r5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8C4C2" stop-opacity="0.28"/><stop offset="100%" stop-color="#B8C4C2" stop-opacity="0.02"/></linearGradient>
+  </defs>
+  <polygon points="700,0 740,0 880,900 520,900" fill="url(#r4)" opacity="0.65"/>
+  <polygon points="714,0 726,0 742,900 698,900" fill="url(#r1)" opacity="0.8"/>
+  <polygon points="728,0 768,0 1020,900 860,900" fill="url(#r2)" opacity="0.65"/>
+  <polygon points="748,0 798,0 1220,900 1080,900" fill="url(#r3)" opacity="0.55"/>
+  <polygon points="778,0 848,0 1400,900 1300,900" fill="url(#r5)" opacity="0.4"/>
+  <polygon points="686,0 646,0 360,900 520,900" fill="url(#r2)" opacity="0.65"/>
+  <polygon points="666,0 616,0 180,900 340,900" fill="url(#r3)" opacity="0.55"/>
+  <polygon points="636,0 576,0 0,780 0,560" fill="url(#r5)" opacity="0.4"/>
+  <circle cx="720" cy="0" r="44" fill="#F0E4C8" opacity="0.4"/>
+  <circle cx="720" cy="0" r="24" fill="#E8C48A" opacity="0.6"/>
+  <circle cx="720" cy="0" r="9" fill="#D4A055" opacity="0.88"/>
+</svg>
+
+<!-- Firma fija -->
+<a href="/" class="biblioteca-firma">nece ser</a>
+
+<!-- Caption fijo -->
+<div class="biblioteca-caption" id="caption">
+  <span class="caption-numero" id="caption-num"></span>
+  <span class="caption-titulo" id="caption-titulo"></span>
+  <span class="caption-separador"> — </span>
+  <span class="caption-categoria" id="caption-cat"></span>
+  <span class="caption-fecha" id="caption-fecha"></span>
+</div>
+
 <main class="biblioteca">
-
-  <div class="biblioteca-fondo"></div>
-
-  <svg class="biblioteca-rayos" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8C48A" stop-opacity="0.6"/><stop offset="100%" stop-color="#E8C48A" stop-opacity="0.04"/></linearGradient>
-      <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4A055" stop-opacity="0.5"/><stop offset="100%" stop-color="#D4A055" stop-opacity="0.04"/></linearGradient>
-      <linearGradient id="r3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8AAE84" stop-opacity="0.38"/><stop offset="100%" stop-color="#8AAE84" stop-opacity="0.03"/></linearGradient>
-      <linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F0E4C8" stop-opacity="0.55"/><stop offset="100%" stop-color="#F0E4C8" stop-opacity="0.04"/></linearGradient>
-      <linearGradient id="r5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8C4C2" stop-opacity="0.32"/><stop offset="100%" stop-color="#B8C4C2" stop-opacity="0.03"/></linearGradient>
-    </defs>
-    <polygon points="720,0 760,0 900,900 540,900" fill="url(#r4)" opacity="0.7"/>
-    <polygon points="715,0 725,0 740,900 700,900" fill="url(#r1)" opacity="0.85"/>
-    <polygon points="730,0 770,0 1040,900 880,900" fill="url(#r2)" opacity="0.7"/>
-    <polygon points="750,0 800,0 1240,900 1100,900" fill="url(#r3)" opacity="0.6"/>
-    <polygon points="780,0 850,0 1400,900 1320,900" fill="url(#r5)" opacity="0.45"/>
-    <polygon points="700,0 660,0 380,900 520,900" fill="url(#r2)" opacity="0.7"/>
-    <polygon points="680,0 630,0 200,900 340,900" fill="url(#r3)" opacity="0.6"/>
-    <polygon points="650,0 590,0 0,800 0,580" fill="url(#r5)" opacity="0.45"/>
-    <circle cx="720" cy="0" r="40" fill="#F0E4C8" opacity="0.45"/>
-    <circle cx="720" cy="0" r="22" fill="#E8C48A" opacity="0.65"/>
-    <circle cx="720" cy="0" r="8" fill="#D4A055" opacity="0.9"/>
-  </svg>
-
-  <div class="biblioteca-caption" id="caption">
-    <span class="caption-numero" id="caption-num"></span>
-    <span class="caption-titulo" id="caption-titulo"></span>
-    <span class="caption-separador"> — </span>
-    <span class="caption-categoria" id="caption-cat"></span>
-    <span class="caption-fecha" id="caption-fecha"></span>
-  </div>
-
   <div class="librero-wrap">
-    <!-- SVG del mueble — trazos encima de los libros -->
-    <svg class="librero-svg" viewBox="0 0 1343 223" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Tope — trazo doble -->
-      <line x1="0" y1="2" x2="1343" y2="2" stroke="#C8922A" stroke-width="2.5"/>
-      <line x1="0" y1="6" x2="1343" y2="6" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
-      <!-- Lateral izquierdo — trazo doble -->
-      <line x1="2" y1="0" x2="2" y2="223" stroke="#C8922A" stroke-width="2.5"/>
-      <line x1="7" y1="0" x2="7" y2="223" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
-      <!-- Lateral derecho — trazo doble -->
-      <line x1="1341" y1="0" x2="1341" y2="223" stroke="#C8922A" stroke-width="2.5"/>
-      <line x1="1336" y1="0" x2="1336" y2="223" stroke="#8A5A08" stroke-width="0.8" opacity="0.7"/>
-      <!-- Base — trazo doble más grueso -->
-      <line x1="0" y1="220" x2="1343" y2="220" stroke="#C8922A" stroke-width="3"/>
-      <line x1="0" y1="215" x2="1343" y2="215" stroke="#8A5A08" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Trazos SVG kandinsky -->
+    <svg class="librero-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tope -->
+      <line x1="0" y1="1" x2="1000" y2="1.5" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="0" y1="5" x2="1000" y2="5.5" stroke="#7A5010" stroke-width="0.7" opacity="0.6" stroke-linecap="round"/>
+      <!-- Lateral izquierdo -->
+      <line x1="1" y1="0" x2="1.5" y2="1000" stroke="#C8922A" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="5.5" y1="0" x2="6" y2="1000" stroke="#7A5010" stroke-width="0.7" opacity="0.6" stroke-linecap="round"/>
+      <!-- Lateral derecho -->
+      <line x1="999" y1="0" x2="998.5" y2="1000" stroke="#C8922A" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="994.5" y1="0" x2="994" y2="1000" stroke="#7A5010" stroke-width="0.7" opacity="0.6" stroke-linecap="round"/>
     </svg>
 
+    <!-- Libros -->
     <div class="librero">
       {{ $i := 1 }}
       {{ range where site.RegularPages "Section" "posts" }}
@@ -69,7 +74,14 @@
       {{ $i = add $i 1 }}
       {{ end }}
     </div>
+
+    <!-- Estante bajo los libros -->
+    <div class="librero-estante"></div>
+
   </div>
+
+  <!-- Penumbra infinita -->
+  <div class="biblioteca-penumbra"></div>
 
 </main>
 
