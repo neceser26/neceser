@@ -1,4 +1,3 @@
-cat > README.md << 'READMEEOF'
 # nece ser (du voyage) — Bitácora técnica
 
 Registro del proceso de construcción del sitio neceser.co.
@@ -20,11 +19,11 @@ Cada sección documenta qué hicimos, por qué y qué aprendemos de ello.
 
 ## 1. Herramientas y entorno
 
-- **Homebrew** — gestor de paquetes para Mac.
-- **Ruby 3.3** — dependencia del entorno.
-- **Hugo** — generador de sitios estáticos (v0.160.1+extended).
-- **Git** — control de versiones.
-- **VS Code** — editor de código.
+- Homebrew — gestor de paquetes para Mac.
+- Ruby 3.3 — dependencia del entorno.
+- Hugo — generador de sitios estáticos (v0.160.1+extended).
+- Git — control de versiones.
+- VS Code — editor de código.
 
 Hugo genera sitios estáticos — HTML, CSS y JS puros, sin base de datos ni servidor dinámico. Ventajas: seguridad, velocidad y costo cero de hosting via GitHub Pages.
 
@@ -49,7 +48,7 @@ Cada publicación tiene un frontmatter con estos campos:
 
 ## 3. El tema — PaperMod
 
-PaperMod es un tema open source instalado como git submodule. El CSS personalizado vive en assets/css/extended/neceser.css — PaperMod lo carga automáticamente.
+PaperMod es un tema open source instalado como git submodule. El CSS personalizado vive en assets/css/extended/neceser.css — PaperMod lo carga automáticamente. El header y footer de PaperMod están ocultos — el sitio tiene identidad visual propia.
 
 ---
 
@@ -82,10 +81,21 @@ Tipografía: Palatino — serif humanista, Hermann Zapf, 1949.
 ## 7. La biblioteca — layout personalizado
 
 ### La visión
-El homepage es un librero personal que se llena orgánicamente con cada publicación. Lomos verticales para textos cortos, portadas horizontales para ensayos. Sin orden predefinido — cronológico de publicación. A futuro: reorganización interactiva por categoría y easter eggs al llenarse.
+El homepage es un librero infinito que se llena cronológicamente con cada publicación. Los libros más recientes están arriba, en la luz del tragaluz. Los más antiguos descienden hacia la penumbra. El scroll hacia abajo es una metáfora del tiempo — llegar al fondo es llegar al origen.
+
+Lomos verticales para textos cortos, portadas horizontales para ensayos. Sin orden predefinido más que el cronológico. A futuro: reorganización interactiva por categoría y easter eggs al llenarse.
+
+### Arquitectura visual
+- Fondo gradiente tragaluz fijo — yeso cálido arriba, Noche abajo
+- Rayos de luz en abanico desde un sol Munch — paleta neceser, eco Kandinsky
+- Mueble con trazos SVG dobles — laterales y tope como dibujo a tinta
+- Estante de madera bajo cada fila de libros
+- Penumbra infinita bajo el último estante
+- Firma "nece ser" fija en esquina superior izquierda
+- Caption interactivo al hover — número, título, categoría en color, año
 
 ### Archivos clave
-- layouts/index.html — homepage / el librero
+- layouts/index.html — homepage / el librero infinito
 - layouts/_default/list.html — lista de posts en /posts/
 - assets/css/extended/neceser.css — estilos completos
 - .gitignore — excluye public/ y .DS_Store
@@ -96,48 +106,36 @@ El homepage es un librero personal que se llena orgánicamente con cada publicac
 - ciencia — Ceniza #7A8280
 - filosofia — Tierra oscura #3D3830
 
-### Estado actual — 27/04/26
-- OK Librero con laterales físicos en layouts/index.html
-- OK Homepage = librero (no lista de posts)
+### Estado actual — 28/04/26
+- OK Homepage = librero infinito con scroll
+- OK Fondo tragaluz + rayos Munch-Kandinsky
+- OK Mueble con trazos SVG
+- OK Firma fija, header PaperMod oculto
+- OK Caption interactivo al hover
+- OK Calvino como primer y único libro real
+- OK paginate = 100 en hugo.toml
 - OK public/ en .gitignore — localhost coincide con neceser.co
-- OK Primer libro — Calvino, verde Musgo
-- PENDIENTE Más publicaciones para llenar el estante
-- PENDIENTE Refinamiento visual — iluminación, sombras, posición
+- PENDIENTE Ajuste fino de posición del primer estante en el viewport
+- PENDIENTE Estante visible debajo de Calvino
+- PENDIENTE Posts reales con contenido editorial
 - PENDIENTE Reorganización interactiva por categoría
-- PENDIENTE Easter eggs al llenarse el librero
+- PENDIENTE Easter eggs al llenarse
 
 ---
 
 ## 8. Lecciones aprendidas
 
 - Hugo v0.160+ no acepta bloques define vacíos — lanza "unexpected EOF"
-- CSS roto antes de .biblioteca invalida todos los estilos siguientes
+- CSS roto antes de cualquier clase invalida todos los estilos siguientes
 - Limpiar caché con rm -rf resources/ al cambiar CSS
 - public/ debe estar en .gitignore — si se commitea, entra en conflicto con Actions
 - Siempre parar el servidor (Ctrl+C) antes de limpiar y reconstruir
 - El CSS debe estar limpio — texto literal de comandos adentro lo corrompe
 - Los campos del frontmatter deben coincidir exactamente con los del template
+- paginate = 100 necesario para mostrar todos los posts en el librero
+- position: fixed para fondo y rayos, position: relative para el librero — así el scroll funciona
 
 ---
 
 Bitácora iniciada el 27 de abril de 2026.
 Construido con Hugo, GitHub Pages y criterio editorial.
-READMEEOF
-git add . && git commit -m "README limpio y coherente — sesión 27/04/26" && git push
----
-
-## 9. Estado actual — 28/04/26
-
-### El librero — versión Kandinsky-Munch
-- ✅ Fondo gradiente tragaluz (yeso cálido → penumbra)
-- ✅ Rayos de luz en abanico con paleta neceser — eco de Munch
-- ✅ Mueble con trazos SVG dobles — laterales y base como dibujo a tinta
-- ✅ Libros con alturas variables — gesto Kandinsky
-- ✅ Números fantasma centrados en cada tomo
-- ✅ Caption interactivo al hover — número, título, categoría en color, año
-- ✅ 11 posts de prueba con mezcla de lomos y portadas
-- ✅ paginate = 100 en hugo.toml
-- ⬜ Ajuste fino de posición del librero en el viewport
-- ⬜ Posts de prueba → posts reales con contenido
-- ⬜ Reorganización interactiva por categoría
-- ⬜ Easter eggs al llenarse
