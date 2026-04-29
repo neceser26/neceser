@@ -40,7 +40,7 @@
 <main class="biblioteca">
   <div class="librero-wrap">
 
-    <!-- Trazos SVG kandinsky -->
+    <!-- Trazos SVG kandinsky — laterales y tope del mueble -->
     <svg class="librero-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Tope -->
       <line x1="0" y1="1" x2="1000" y2="1.5" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
@@ -53,31 +53,42 @@
       <line x1="994.5" y1="0" x2="994" y2="1000" stroke="#7A5010" stroke-width="0.7" opacity="0.6" stroke-linecap="round"/>
     </svg>
 
-    <!-- Libros -->
     <div class="librero">
-      {{ $i := 1 }}
-      {{ range where site.RegularPages "Section" "posts" }}
-      {{ $categoria := .Params.categoria | default "general" }}
-      {{ $tipo := .Params.tipo | default "lomo" }}
-      {{ $fecha := .Date.Format "2006" }}
-      <a href="{{ .Permalink }}"
-         class="libro {{ $tipo }} categoria-{{ $categoria }}"
-         data-titulo="{{ .Title }}"
-         data-categoria="{{ $categoria }}"
-         data-num="{{ $i }}"
-         data-fecha="{{ $fecha }}">
-        <span class="libro-numero">{{ $i }}</span>
-        {{ if eq $tipo "portada" }}
-        <span class="libro-titulo-portada">{{ .Title }}</span>
-        {{ end }}
-      </a>
-      {{ $i = add $i 1 }}
+
+      <!-- Estante activo: libros publicados, cronológico inverso -->
+      <div class="estante activo">
+        <div class="estante-libros">
+          {{ $i := 1 }}
+          {{ range where site.RegularPages "Section" "posts" }}
+          {{ $categoria := .Params.categoria | default "general" }}
+          {{ $tipo := .Params.tipo | default "lomo" }}
+          {{ $fecha := .Date.Format "2006" }}
+          <a href="{{ .Permalink }}"
+             class="libro {{ $tipo }} categoria-{{ $categoria }}"
+             data-titulo="{{ .Title }}"
+             data-categoria="{{ $categoria }}"
+             data-num="{{ $i }}"
+             data-fecha="{{ $fecha }}">
+            <span class="libro-numero">{{ $i }}</span>
+            {{ if eq $tipo "portada" }}
+            <span class="libro-titulo-portada">{{ .Title }}</span>
+            {{ end }}
+          </a>
+          {{ $i = add $i 1 }}
+          {{ end }}
+        </div>
+        <div class="estante-tabla"></div>
+      </div>
+
+      <!-- Estantes vacíos: descienden hacia la penumbra, esperan llenarse -->
+      {{ range $n := seq 1 8 }}
+      <div class="estante vacio" style="--n: {{ $n }}">
+        <div class="estante-libros"></div>
+        <div class="estante-tabla"></div>
+      </div>
       {{ end }}
+
     </div>
-
-    <!-- Estante bajo los libros -->
-    <div class="librero-estante"></div>
-
   </div>
 
   <!-- Penumbra infinita -->
